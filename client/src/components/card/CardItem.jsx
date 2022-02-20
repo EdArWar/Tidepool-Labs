@@ -1,8 +1,8 @@
 import moment from "moment";
 import React from "react";
-import { Button, Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, Card, Col, ListGroupItem } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import avatar from "../../assets/images/avatar.png";
 import { globalOp } from "../../store/global";
 import { modalOp } from "../../store/modal";
 import { getModalParams, MODAL_NAME } from "./../../utils/ModalParams";
@@ -28,44 +28,53 @@ const CardItem = ({ post }) => {
           boxShadow:
             "0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%)",
           margin: "20px 0px",
+          paddingTop: "20px",
           overflow: "hidden",
-          borderRadius: "30px",
         }}
       >
-        <Card>
-          <Link to={`posts/${post._id}`}>
+        <>
+          <div style={{ display: "flex", justifyContent: "center" }}>
             <div
               style={{
-                width: "100%",
+                width: "200px",
                 height: "200px",
-                backgroundImage: `url(${post.avatar})`,
-                backgroundPosition: "center",
+                borderRadius: "50%",
                 overflow: "hidden",
-                backgroundSize: "cover",
-                backgroundColor: "rgba(0, 0, 0, 0.5)",
-                backgroundBlendMode: "darken",
-                cursor: "pointer",
               }}
-            ></div>
-          </Link>
-          <Card.Body>
-            <Card.Title>{post.name}</Card.Title>
-          </Card.Body>
-          <ListGroup className="list-group-flush">
-            <ListGroupItem>Profession: {post.profession}</ListGroupItem>
+            >
+              <img
+                src={post.avatar || avatar}
+                alt=""
+                width="100%"
+                height="auto"
+              />
+            </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+          >
+            <Card.Body>
+              <Card.Title>{post.name}</Card.Title>
+            </Card.Body>
+            <ListGroupItem> {post.profession}</ListGroupItem>
             <ListGroupItem>
               CreatedAt: {moment(post.createdAt).fromNow()}
             </ListGroupItem>
-          </ListGroup>
-          <Card.Body
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-            }}
-          >
-            <Button onClick={onUpdateClicked}>Update</Button>
-          </Card.Body>
-        </Card>
+            <Card.Body
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+              }}
+            >
+              <Button onClick={onUpdateClicked}>Update</Button>
+            </Card.Body>
+          </div>
+        </>
       </div>
     </Col>
   );

@@ -4,7 +4,6 @@ import ModalCustom from "../components/modal/ModalCustom";
 import UpdatePostComponent from "../components/postUpdate/UpdatePostComponent";
 import { modalOp, modalSel } from "../store/modal";
 import { isNotEmpty } from "../utils/Utils";
-import RemovePost from "./../components/modal/removePost/RemovePost";
 
 const LayoutModals = () => {
   const dispatch = useDispatch();
@@ -19,7 +18,6 @@ const LayoutModals = () => {
         }}
         title={modalState?.title}
       >
-        {modalState?.removePost && <RemovePost />}
         {modalState?.updatePost && <UpdatePostComponent />}
       </ModalCustom>
     </>
