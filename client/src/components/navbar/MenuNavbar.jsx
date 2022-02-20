@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import CustomLink from "./../link/CustomLink";
-import styles from "./MenuNavbar.module.css";
 
 const MenuNavbar = () => {
   return (
@@ -11,11 +10,8 @@ const MenuNavbar = () => {
           Tidepool Labs
         </CustomLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse
-          id="responsive-navbar-nav"
-          style={{ display: "flex", justifyContent: "space-around" }}
-        >
-          <Nav className={styles.menu_navbar}>
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav>
             <CustomLink to="/">Home</CustomLink>
             <CustomLink to="/create">Create</CustomLink>
           </Nav>
