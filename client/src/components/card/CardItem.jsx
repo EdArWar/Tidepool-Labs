@@ -12,7 +12,6 @@ const CardItem = ({ post }) => {
 
   const onUpdateClicked = () => {
     dispatch(globalOp.handleSetUpdatePost(post));
-    console.log("post", post);
     dispatch(
       modalOp.handleSetModalState({
         ...getModalParams(MODAL_NAME.POST_UPDATE),

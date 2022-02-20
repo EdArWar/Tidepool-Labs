@@ -47,6 +47,23 @@ class PostController {
       console.log(error);
     }
   }
+
+  async getPostBySearch(req, res) {
+    try {
+      const { search } = req.params;
+      const posts = await Post.find();
+
+      let newPost = posts.filter(
+        (post) =>
+          post.name.toLowerCase().indexOf(search) !== -1 &&
+          post.name.toLowerCase().indexOf(search) === 0
+      );
+
+      res.status(200).json(newPost);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 module.exports = new PostController();

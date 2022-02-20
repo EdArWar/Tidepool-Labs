@@ -11,6 +11,7 @@ const PageRoutes = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
+        <Route path="/:search" element={<HomePage />} />
         <Route path="create" element={<CreatePage />} />
         <Route path="search-words" element={<SearchWordsPage />} />
         <Route path="*" element={<NotFoundPage />} />

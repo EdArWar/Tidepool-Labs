@@ -6,5 +6,6 @@ router.post("/create", PostController.createPost);
 router.patch("/update", PostController.updatePost);
 
 router.get("/", PostController.getAllPosts);
+router.get("/:search", PostController.getPostBySearch);
 
 module.exports = router;
