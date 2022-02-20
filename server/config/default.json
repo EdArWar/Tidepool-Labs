@@ -1,0 +1,5 @@
+{
+  "PORT": 3001,
+  "dbUrl": "mongodb+srv://edward:tidepool123@cluster0.witgw.mongodb.net/to?retryWrites=true&w=majority",
+  "secretKey": "Tidepoll labs"
+}
