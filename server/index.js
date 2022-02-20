@@ -1,9 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const fileUpload = require("express-fileupload");
+const corsMiddleware = require("./middleware/cors.middleware");
+const PostRoutes = require("./routes/PostRoutes");
+
 const config = require("config");
 
 const app = express();
 const PORT = config.get("PORT");
+
+app.use(fileUpload({}));
+app.use(corsMiddleware);
+app.use(express.json({ limit: "30mb", extended: true }));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
+app.use(express.static("static"));
+
+app.use("/api/posts", PostRoutes);
 
 const start = async () => {
   try {
