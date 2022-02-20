@@ -28,7 +28,7 @@ const Search = ({
           placeholder={placeholder}
         />
       </label>
-      <Button variant="success" onClick={onSearchClick}>
+      <Button variant="success" onClick={onSearchClick} disabled={!value}>
         <AiOutlineSearch />
       </Button>
     </div>

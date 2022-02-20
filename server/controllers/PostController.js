@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
+const SearchWords = require("../models/SearchWords");
 
 class PostController {
   async createPost(req, res) {
@@ -51,12 +52,29 @@ class PostController {
   async getPostBySearch(req, res) {
     try {
       const { search } = req.params;
+
+      const searchWords = await SearchWords.find();
+
+      let word = searchWords.find((item) => item.word === search);
+
+      if (!word) {
+        const newWord = new SearchWords({
+          word: search,
+        });
+        await newWord.save();
+      } else {
+        await SearchWords.findByIdAndUpdate(word._id, {
+          word: word.word,
+          count: word.count + 1,
+        });
+      }
+
       const posts = await Post.find();
 
       let newPost = posts.filter(
         (post) =>
-          post.name.toLowerCase().indexOf(search) !== -1 &&
-          post.name.toLowerCase().indexOf(search) === 0
+          post.name?.toLowerCase().indexOf(search) !== -1 &&
+          post.name?.toLowerCase().indexOf(search) === 0
       );
 
       res.status(200).json(newPost);

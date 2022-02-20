@@ -24,7 +24,7 @@ const HomePage = () => {
   };
 
   const onSearchClick = () => {
-    setSearchParams({ search: searchState.toLowerCase() });
+    searchState && setSearchParams({ search: searchState.toLowerCase() });
   };
 
   useEffect(() => {
