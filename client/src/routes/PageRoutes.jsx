@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import CreatePage from "../pages/createPage/CreatePage";
 import Layout from "./../layout/Layout";
 import NotFoundPage from "./../pages/404/NotFoundPage";
-import CreatePage from "./../pages/createPage/CreatePage";
 import HomePage from "./../pages/homePage/HomePage";
 import SearchWordsPage from "./../pages/searchWordsPage/SearchWordsPage";
 
