@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import CreatePage from "../pages/createPage/CreatePage";
 import Layout from "./../layout/Layout";
 import NotFoundPage from "./../pages/404/NotFoundPage";
 import HomePage from "./../pages/homePage/HomePage";
@@ -12,9 +11,9 @@ const PageRoutes = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/:search" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="search" element={<SearchPage />} />
-        <Route path="create" element={<CreatePage />} />
+        {/* <Route path="create" element={<CreatePage />} /> */}
         <Route path="search-words" element={<SearchWordsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

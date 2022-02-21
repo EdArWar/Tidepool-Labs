@@ -12,13 +12,13 @@ import Loader from "./../../components/loader/Loader";
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const loader = useSelector(globalSel.loader);
-  const postsData = useSelector(postSel.postsData);
-
-  const promptFiled = useSelector(searchSel.promptFiled);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  let searchValue = searchParams.get("search") || "";
+  const searchValue = searchParams.get("search") || "";
+
+  const loader = useSelector(globalSel.loader);
+  const postsData = useSelector(postSel.postsData);
+  const promptFiled = useSelector(searchSel.promptFiled);
 
   const [searchState, setSearchState] = useState(searchValue);
 
