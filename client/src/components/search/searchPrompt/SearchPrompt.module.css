@@ -14,4 +14,9 @@
 .search_prompt_container ul li {
   border-bottom: 1px solid gray;
   list-style-type: none;
+  cursor: pointer;
+}
+.search_prompt_container ul li:hover {
+  font-size: 18px;
+  color: #f0fff0;
 }
