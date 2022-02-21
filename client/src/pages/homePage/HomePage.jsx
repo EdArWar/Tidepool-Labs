@@ -3,7 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import PostApi from "../../API/PostApi";
-import Search from "../../components/search/Search";
+import SearchComponent from "../../components/search/SearchComponent";
 import { globalSel } from "../../store/global";
 import { postSel } from "../../store/post";
 import CardItem from "./../../components/card/CardItem";
@@ -44,13 +44,11 @@ const HomePage = () => {
           margin: "2% auto",
         }}
       >
-        <Row>
-          <Search
-            value={searchState}
-            onChange={onSearchChange}
-            onSearchClick={onSearchClick}
-          />
-        </Row>
+        <SearchComponent
+          value={searchState}
+          onChange={onSearchChange}
+          onSearchClick={onSearchClick}
+        />
         {!loader ? (
           <Row>
             {postsData.length ? (

@@ -1,0 +1,17 @@
+.search_prompt_container {
+  background-color: black;
+  color: azure;
+  width: 300px;
+  position: absolute;
+  top: 50px;
+  left: 74px;
+  z-index: 99999;
+}
+
+.search_prompt_container ul {
+  padding: 0;
+}
+.search_prompt_container ul li {
+  border-bottom: 1px solid gray;
+  list-style-type: none;
+}
