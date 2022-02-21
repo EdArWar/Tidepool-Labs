@@ -2,9 +2,13 @@ import React from "react";
 import SearchListItem from "./SearchListItem";
 
 const SearchList = ({ data }) => {
+  const sortData = [...data].sort((a, b) => {
+    return b.count - a.count;
+  });
+
   return (
     <>
-      {data.map((item, i) => {
+      {sortData.map((item, i) => {
         return (
           <SearchListItem
             key={item._id}

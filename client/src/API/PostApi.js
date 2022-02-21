@@ -83,14 +83,11 @@ class PostApi {
   getAllPostsNames_api() {
     return async (dispatch) => {
       try {
-        dispatch(globalOp.handleLoaderState(true));
         const response = await axios.get(`${API}posts/names`);
         const data = response.data;
         dispatch(postOp.handleSetAllPostsNames(data));
       } catch (error) {
         console.log(error);
-      } finally {
-        dispatch(globalOp.handleLoaderState(false));
       }
     };
   }

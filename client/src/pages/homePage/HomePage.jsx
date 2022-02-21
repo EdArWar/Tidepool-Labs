@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import PostApi from "../../API/PostApi";
 import SearchComponent from "../../components/search/SearchComponent";
 import { globalSel } from "../../store/global";
-import { postSel } from "../../store/post";
+import { postOp, postSel } from "../../store/post";
 import { searchOp, searchSel } from "../../store/search";
 import CardItem from "./../../components/card/CardItem";
 import Loader from "./../../components/loader/Loader";
@@ -43,6 +43,11 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(PostApi.getAllPostsNames_api());
+
+    return () => {
+      setSearchState("");
+      dispatch(postOp.handleSetAllPost([]));
+    };
   }, []);
 
   const onSearchPrompt = (item) => {
@@ -67,7 +72,7 @@ const HomePage = () => {
         />
         {!loader ? (
           <Row>
-            {postsData.length ? (
+            {postsData.length > 0 ? (
               postsData.map((item, i) => {
                 return <CardItem key={i} post={item} />;
               })
