@@ -4,6 +4,7 @@ import CreatePage from "../pages/createPage/CreatePage";
 import Layout from "./../layout/Layout";
 import NotFoundPage from "./../pages/404/NotFoundPage";
 import HomePage from "./../pages/homePage/HomePage";
+import SearchPage from "./../pages/searchPage/SearchPage";
 import SearchWordsPage from "./../pages/searchWordsPage/SearchWordsPage";
 
 const PageRoutes = () => {
@@ -12,6 +13,7 @@ const PageRoutes = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="/:search" element={<HomePage />} />
+        <Route path="search" element={<SearchPage />} />
         <Route path="create" element={<CreatePage />} />
         <Route path="search-words" element={<SearchWordsPage />} />
         <Route path="*" element={<NotFoundPage />} />

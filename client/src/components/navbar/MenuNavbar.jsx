@@ -13,7 +13,7 @@ const MenuNavbar = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
             <CustomLink to="/">Home</CustomLink>
-            <CustomLink to="/create">Create</CustomLink>
+            <CustomLink to="/search">Search</CustomLink>
           </Nav>
         </Navbar.Collapse>
       </Container>

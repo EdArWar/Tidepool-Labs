@@ -4,11 +4,13 @@ import thunk from "redux-thunk";
 import { globalSlice } from "./global/globalSlice";
 import { modalSlice } from "./modal/modalSlice";
 import { postSlice } from "./post/postSlice";
+import { searchSlice } from "./search/searchSlice";
 
 const rootReducer = combineReducers({
   global: globalSlice.reducer,
   post: postSlice.reducer,
   modal: modalSlice.reducer,
+  search: searchSlice.reducer,
 });
 
 export const store = createStore(
