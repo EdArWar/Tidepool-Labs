@@ -35,6 +35,7 @@ const HomePage = () => {
     !searchValue
       ? dispatch(PostApi.getAllPosts_api())
       : dispatch(PostApi.getPostBySearch_api(searchValue));
+    !searchValue && setSearchState("");
   }, [searchValue]);
 
   useEffect(() => {
