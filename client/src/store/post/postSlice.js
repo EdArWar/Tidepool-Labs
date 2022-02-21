@@ -11,5 +11,13 @@ export const postSlice = createSlice({
     setAllPostsNames(state, action) {
       state.postsNames = action.payload;
     },
+    updatePost(state, action) {
+      state.postsData = state.postsData.map((item) =>
+        item._id === action.payload._id ? action.payload : item
+      );
+    },
+    setUpdatePost(state, action) {
+      state.updatePost = action.payload;
+    },
   },
 });

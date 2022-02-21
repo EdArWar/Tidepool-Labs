@@ -8,8 +8,5 @@ export const globalSlice = createSlice({
     setLoader(state, action) {
       state.loader = action.payload;
     },
-    setUpdatePost(state, action) {
-      state.updatePost = action.payload;
-    },
   },
 });

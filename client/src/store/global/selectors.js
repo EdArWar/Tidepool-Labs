@@ -4,11 +4,6 @@ const globalSelector = (state) => state.global;
 
 const loader = createSelector([globalSelector], (global) => global.loader);
 
-const updatePost = createSelector(
-  [globalSelector],
-  (global) => global.updatePost
-);
-
-const selectors = { loader, updatePost };
+const selectors = { loader };
 
 export default selectors;

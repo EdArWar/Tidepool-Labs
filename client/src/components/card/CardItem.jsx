@@ -3,15 +3,15 @@ import React from "react";
 import { Button, Card, Col, ListGroupItem } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import avatar from "../../assets/images/avatar.png";
-import { globalOp } from "../../store/global";
 import { modalOp } from "../../store/modal";
+import { postOp } from "../../store/post";
 import { getModalParams, MODAL_NAME } from "./../../utils/ModalParams";
 
 const CardItem = ({ post }) => {
   const dispatch = useDispatch();
 
   const onUpdateClicked = () => {
-    dispatch(globalOp.handleSetUpdatePost(post));
+    dispatch(postOp.handleSetUpdatePost(post));
     dispatch(
       modalOp.handleSetModalState({
         ...getModalParams(MODAL_NAME.POST_UPDATE),

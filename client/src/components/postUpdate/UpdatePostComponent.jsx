@@ -3,11 +3,11 @@ import { Button, Form, Row } from "react-bootstrap";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 import PostApi from "../../API/PostApi";
-import { globalSel } from "../../store/global";
+import { postSel } from "../../store/post";
 
 const UpdatePostComponent = () => {
   const dispatch = useDispatch();
-  const updatePost = useSelector(globalSel.updatePost);
+  const updatePost = useSelector(postSel.updatePost);
 
   const [updateButtonState, setUpdateButtonState] = useState(false);
 
