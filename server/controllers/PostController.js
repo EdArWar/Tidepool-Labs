@@ -49,6 +49,18 @@ class PostController {
     }
   }
 
+  async getAllPostsNames(req, res) {
+    try {
+      const posts = await Post.find();
+
+      const postNames = posts.map((item) => item.name);
+
+      res.status(200).json(postNames);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async getPostBySearch(req, res) {
     try {
       const { search } = req.params;

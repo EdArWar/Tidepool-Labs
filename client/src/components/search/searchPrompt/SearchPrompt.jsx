@@ -1,27 +1,29 @@
-import React, { memo } from "react";
+import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { postSel } from "../../../store/post";
 import styles from "./SearchPrompt.module.css";
 
-const SearchPrompt = ({ value }) => {
-  const postData = useSelector(postSel.postsData);
+const SearchPrompt = ({ value, onSearchPrompt }) => {
+  const postNamesData = useSelector(postSel.postsNames);
 
-  if (!value) return null;
+  let searchWords = useMemo(() => {
+    return postNamesData.reduce((prev, cur) => {
+      const currentName = cur.split(" ")[0];
+      if (
+        currentName?.toLowerCase().indexOf(value.toLowerCase()) !== -1 &&
+        currentName?.toLowerCase().indexOf(value.toLowerCase()) === 0 &&
+        !prev.includes(currentName)
+      ) {
+        prev.push(currentName);
+      }
+      return prev;
+    }, []);
+  }, [value]);
 
-  const searchWords = postData.reduce((prev, cur) => {
-    const currentName = cur.name?.split(" ")[0];
-    if (
-      currentName?.toLowerCase().indexOf(value) !== -1 &&
-      currentName?.toLowerCase().indexOf(value) === 0 &&
-      !prev.includes(currentName)
-    ) {
-      prev.push(currentName);
-    }
-    return prev;
-  }, []);
+  if (!value || searchWords.length === 0) return null;
 
-  const onSelectItem = () => {
-    //
+  const onSelectItem = (item) => {
+    onSearchPrompt(item);
   };
 
   return (
@@ -40,4 +42,4 @@ const SearchPrompt = ({ value }) => {
   );
 };
 
-export default memo(SearchPrompt);
+export default SearchPrompt;

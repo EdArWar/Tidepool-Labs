@@ -4,8 +4,8 @@ const postSelector = (state) => state.post;
 
 const postsData = createSelector([postSelector], (post) => post.postsData);
 
-const postDetails = createSelector([postSelector], (post) => post.postDetails);
+const postsNames = createSelector([postSelector], (post) => post.postsNames);
 
-const selectors = { postsData, postDetails };
+const selectors = { postsData, postsNames };
 
 export default selectors;

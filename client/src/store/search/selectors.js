@@ -7,6 +7,11 @@ const searchData = createSelector(
   (search) => search.searchData
 );
 
-const selectors = { searchData };
+const promptFiled = createSelector(
+  [searchSelector],
+  (search) => search.promptFiled
+);
+
+const selectors = { searchData, promptFiled };
 
 export default selectors;

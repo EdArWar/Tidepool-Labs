@@ -47,7 +47,7 @@ class PostApi {
     };
   }
 
-  getPostBySearch_api(searchValue, setSkeletonState) {
+  getPostBySearch_api(searchValue) {
     return async (dispatch) => {
       try {
         dispatch(globalOp.handleLoaderState(true));
@@ -72,6 +72,21 @@ class PostApi {
         const response = await axios.get(`${API}posts/`);
         const data = response.data;
         dispatch(postOp.handleSetAllPost(data));
+      } catch (error) {
+        console.log(error);
+      } finally {
+        dispatch(globalOp.handleLoaderState(false));
+      }
+    };
+  }
+
+  getAllPostsNames_api() {
+    return async (dispatch) => {
+      try {
+        dispatch(globalOp.handleLoaderState(true));
+        const response = await axios.get(`${API}posts/names`);
+        const data = response.data;
+        dispatch(postOp.handleSetAllPostsNames(data));
       } catch (error) {
         console.log(error);
       } finally {

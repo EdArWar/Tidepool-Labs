@@ -8,5 +8,8 @@ export const searchSlice = createSlice({
     setAllSearch(state, action) {
       state.searchData = action.payload;
     },
+    setPromptFiledState(state, action) {
+      state.promptFiled = action.payload;
+    },
   },
 });

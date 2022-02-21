@@ -6,6 +6,7 @@ import PostApi from "../../API/PostApi";
 import SearchComponent from "../../components/search/SearchComponent";
 import { globalSel } from "../../store/global";
 import { postSel } from "../../store/post";
+import { searchOp, searchSel } from "../../store/search";
 import CardItem from "./../../components/card/CardItem";
 import Loader from "./../../components/loader/Loader";
 
@@ -14,12 +15,15 @@ const HomePage = () => {
   const loader = useSelector(globalSel.loader);
   const postsData = useSelector(postSel.postsData);
 
+  const promptFiled = useSelector(searchSel.promptFiled);
+
   const [searchParams, setSearchParams] = useSearchParams();
   let searchValue = searchParams.get("search") || "";
 
   const [searchState, setSearchState] = useState(searchValue);
 
   const onSearchChange = (e) => {
+    !promptFiled && dispatch(searchOp.handleSetPromptFiledState(true));
     setSearchState(e.target.value);
   };
 
@@ -37,6 +41,16 @@ const HomePage = () => {
     !searchState && setSearchParams({});
   }, [searchState]);
 
+  useEffect(() => {
+    dispatch(PostApi.getAllPostsNames_api());
+  }, []);
+
+  const onSearchPrompt = (item) => {
+    dispatch(searchOp.handleSetPromptFiledState(false));
+    setSearchState(item);
+    setSearchParams({ search: item.toLowerCase() });
+  };
+
   return (
     <>
       <Container
@@ -48,6 +62,8 @@ const HomePage = () => {
           value={searchState}
           onChange={onSearchChange}
           onSearchClick={onSearchClick}
+          onSearchPrompt={onSearchPrompt}
+          promptFiled={promptFiled}
         />
         {!loader ? (
           <Row>
