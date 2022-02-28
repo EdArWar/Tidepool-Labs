@@ -5,9 +5,11 @@ import { globalSlice } from "./global/globalSlice";
 import { modalSlice } from "./modal/modalSlice";
 import { postSlice } from "./post/postSlice";
 import { searchSlice } from "./search/searchSlice";
+import { userSlice } from "./user/userSlice";
 
 const rootReducer = combineReducers({
   global: globalSlice.reducer,
+  user: userSlice.reducer,
   post: postSlice.reducer,
   modal: modalSlice.reducer,
   search: searchSlice.reducer,
