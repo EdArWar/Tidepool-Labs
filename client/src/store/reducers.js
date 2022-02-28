@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import { globalSlice } from "./global/globalSlice";
+import { messageSlice } from "./message/messageSlice";
 import { modalSlice } from "./modal/modalSlice";
 import { postSlice } from "./post/postSlice";
 import { searchSlice } from "./search/searchSlice";
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   post: postSlice.reducer,
   modal: modalSlice.reducer,
   search: searchSlice.reducer,
+  message: messageSlice.reducer,
 });
 
 export const store = createStore(

@@ -4,6 +4,7 @@ import ModalCustom from "../components/modal/ModalCustom";
 import UpdatePostComponent from "../components/postUpdate/UpdatePostComponent";
 import { modalOp, modalSel } from "../store/modal";
 import { isNotEmpty } from "../utils/Utils";
+import SignIn from "./../components/signIn/SignIn";
 
 const LayoutModals = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const LayoutModals = () => {
         }}
         title={modalState?.title}
       >
+        {modalState?.signIn && <SignIn />}
         {modalState?.updatePost && <UpdatePostComponent />}
       </ModalCustom>
     </>
