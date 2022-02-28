@@ -5,8 +5,14 @@ export const globalSlice = createSlice({
   name: "global",
   initialState: initialGlobalState,
   reducers: {
+    setAuth(state, action) {
+      state.isAuth = action.payload;
+    },
     setLoader(state, action) {
       state.loader = action.payload;
+    },
+    setToken(state, action) {
+      state.token = action.payload;
     },
   },
 });

@@ -14,6 +14,7 @@ const MenuNavbar = () => {
           <Nav>
             <CustomLink to="/">Home</CustomLink>
             <CustomLink to="/search">Search</CustomLink>
+            <CustomLink to="/search">Logout</CustomLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
