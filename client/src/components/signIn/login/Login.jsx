@@ -18,6 +18,7 @@ const Login = () => {
   }, []);
 
   const onLogin = () => {
+    console.log("onLogin");
     dispatch(AuthApi.login(email, password));
   };
 

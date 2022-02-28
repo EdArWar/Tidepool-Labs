@@ -52,6 +52,8 @@ class AuthApi {
         const userData = data.user;
 
         if (!data.errorStatus) {
+          console.log("login", data);
+
           const token = data.token;
           dispatch(globalOp.handleTokenState(token));
           dispatch(globalOp.handleAuthState(true));

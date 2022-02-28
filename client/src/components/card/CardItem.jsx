@@ -1,14 +1,17 @@
 import moment from "moment";
 import React from "react";
 import { Button, Card, Col, ListGroupItem } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import avatar from "../../assets/images/avatar.png";
+import { globalSel } from "../../store/global";
 import { modalOp } from "../../store/modal";
 import { postOp } from "../../store/post";
 import { getModalParams, MODAL_NAME } from "./../../utils/ModalParams";
 
 const CardItem = ({ post }) => {
   const dispatch = useDispatch();
+
+  const isAuth = useSelector(globalSel.isAuth);
 
   const onUpdateClicked = () => {
     dispatch(postOp.handleSetUpdatePost(post));
@@ -70,7 +73,13 @@ const CardItem = ({ post }) => {
                 justifyContent: "space-around",
               }}
             >
-              <Button onClick={onUpdateClicked}>Update</Button>
+              <Button
+                disabled={!isAuth}
+                title={!isAuth ? "Authorization required !" : ""}
+                onClick={onUpdateClicked}
+              >
+                Update
+              </Button>
             </Card.Body>
           </div>
         </>

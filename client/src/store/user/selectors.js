@@ -4,11 +4,6 @@ const userSelector = (state) => state.user;
 
 const userData = createSelector([userSelector], (user) => user.userData);
 
-const userInfoPanel = createSelector(
-  [userSelector],
-  (user) => user.userInfoPanel
-);
-
-const selectors = { userData, userInfoPanel };
+const selectors = { userData };
 
 export default selectors;

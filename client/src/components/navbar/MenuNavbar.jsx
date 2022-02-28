@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { MdLogin, MdLogout } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { globalSel } from "../../store/global";
+import { globalOp, globalSel } from "../../store/global";
 import { modalOp } from "../../store/modal";
 import { userOp } from "../../store/user";
 import { getModalParams, MODAL_NAME } from "../../utils/ModalParams";
@@ -12,9 +12,12 @@ const MenuNavbar = () => {
   const isAuth = useSelector(globalSel.isAuth);
   const dispatch = useDispatch();
 
+  const token = localStorage.getItem("token");
+
   const onLogout = () => {
-    dispatch(userOp.handleSetUserInfoPanel(true));
-    document.body.classList.add("disable_scroll");
+    dispatch(userOp.handleSetUserData([]));
+    dispatch(globalOp.handleAuthState(null));
+    localStorage.removeItem("token");
   };
 
   const onLogin = () => {
@@ -32,10 +35,9 @@ const MenuNavbar = () => {
           <Nav className="me-auto">
             <CustomLink to="/">Home</CustomLink>
             <CustomLink to="/search">Search</CustomLink>
-            {isAuth && <CustomLink to="/create">Create</CustomLink>}
           </Nav>
           <Nav>
-            {!!isAuth ? (
+            {token ? (
               <MdLogout
                 style={{
                   color: "white",
