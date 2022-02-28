@@ -6,9 +6,10 @@ import "./Login.css";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const [validated, setValidated] = useState(false);
 
-  const [email, setEmail] = useState("admin@mail.ru");
-  const [password, setPassword] = useState("admin");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     return () => {
@@ -17,37 +18,47 @@ const Login = () => {
     };
   }, []);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setValidated(true);
+    validated && onLogin();
+  };
+
   const onLogin = () => {
-    console.log("onLogin");
     dispatch(AuthApi.login(email, password));
   };
 
   return (
     <Container className="login_container">
-      <Row className="justify-content-md-center">
-        <Form.Group className="mb-3">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Row className="justify-content-md-center">
+          <Form.Group className="mb-3">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </Form.Group>
 
-        <Button variant="primary" onClick={onLogin}>
-          Login
-        </Button>
-      </Row>
+          <Button type="submit" variant="primary">
+            Login
+          </Button>
+        </Row>
+      </Form>
     </Container>
   );
 };
