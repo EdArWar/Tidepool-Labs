@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import AuthApi from "./API/AuthApi";
-import AppHOC from "./components/hoc/AppHOC";
+import AlertMessage from "./components/alertMessage/AlertMessage";
 import PageRoutes from "./routes/PageRoutes";
 
 const App = () => {
@@ -12,9 +12,9 @@ const App = () => {
   }, []);
 
   return (
-    <AppHOC>
+    <AlertMessage>
       <PageRoutes />;
-    </AppHOC>
+    </AlertMessage>
   );
 };
 

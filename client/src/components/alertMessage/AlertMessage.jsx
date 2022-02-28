@@ -9,7 +9,7 @@ const options = {
   transition: transitions.SCALE,
 };
 
-const AlertProviderHooks = ({ children }) => {
+const AlertMessage = ({ children }) => {
   return (
     <AlertProvider template={AlertTemplate} {...options}>
       {children}
@@ -17,4 +17,4 @@ const AlertProviderHooks = ({ children }) => {
   );
 };
 
-export default AlertProviderHooks;
+export default AlertMessage;
