@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload");
 const corsMiddleware = require("./middleware/cors.middleware");
+const AuthRoutes = require("./routes/AuthRoutes");
 const PostRoutes = require("./routes/PostRoutes");
 const SearchRoutes = require("./routes/SearchRoutes");
 
@@ -16,6 +17,7 @@ app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(express.static("static"));
 
+app.use("/api/auth", AuthRoutes);
 app.use("/api/posts", PostRoutes);
 app.use("/api/search", SearchRoutes);
 
